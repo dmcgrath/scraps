@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+		<title>Realtime heatmap based on browser timings</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<style>
+			body, html {
+				margin:0;
+				padding:0;
+				font-family:Arial;
+			}
+			h1 {
+				margin-bottom:10px;
+			}
+			#main {
+				position:relative;
+				width:940px;
+				padding:20px;
+				margin:auto;
+			}
+			#heatmapArea {
+				position:relative;
+				width:1050px;
+				height:550px;
+				border:1px dashed black;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div id="main">
+			<h1>Realtime heatmap based on browser timings</h1>
+			<div id="heatmapArea">
+			
+			</div>
+        <a href="http://www.patrick-wied.at/static/heatmapjs/">heatmap.js credit</a>
+		</div>
+		<script type="text/javascript" src="heatmap.js"></script>
+		<script type="text/javascript">
+	
+	
+		window.onload = function(){
+			var xx = h337.create({"element":document.getElementById("heatmapArea"), "radius":15, "visible":true});
+			
+         var id = setInterval(function(){
+				var d = new Date();
+            var x = d.getMilliseconds();
+            var y = (d.getSeconds()*25) % 500;
+				xx.store.addDataPoint(x+25,y+25);
+			}, 10)
+         
+         
+         
+         
+		};
+		</script>
+	</body>
+</html>
